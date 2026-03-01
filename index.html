@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="top-bar">
+            <h1>Weather Dashboard</h1>
+
+            <label class="theme-switch">
+                <input type="checkbox" id="themeToggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="cityInput" placeholder="Enter city name" autocomplete="off">
+            <button id="searchBtn" type="button">Search</button>
+        </div>
+
+        <div id="loadingSpinner" class="spinner hidden"></div>
+
+        <div id="weatherResult"></div>
+        <div id="forecast"></div>
+
+        <h3>Search History</h3>
+        <ul id="historyList"></ul>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
