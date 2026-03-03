@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Permissions-Policy" content="geolocation=*">
     <meta name="description" content="Real-time weather information and forecasts for any city worldwide.">
     <title>Weather Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,6 +41,16 @@
                     <circle cx="12" cy="10" r="3" />
                 </svg>
                 <span id="locationLabel">Detecting location...</span>
+                <button id="locBtn" title="Use my current location"
+                    style="background:none;border:none;cursor:pointer;padding:0 0 0 6px;display:inline-flex;align-items:center;color:inherit;opacity:0.7;"
+                    onclick="requestLocation()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3" />
+                        <path d="M12 2v3M12 19v3M2 12h3M19 12h3" />
+                        <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z" stroke-dasharray="2 3" />
+                    </svg>
+                </button>
             </div>
             <div class="search-box">
                 <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A0AEC0"

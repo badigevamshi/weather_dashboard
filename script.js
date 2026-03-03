@@ -1,4 +1,4 @@
-const apiKey = "65857ce633b80efc1371858def5c256e";
+const apiKey = "9aa9665911b0629d40c56dda3363f4af";
 
 /* ===============================
    DOM ELEMENTS
@@ -111,26 +111,44 @@ const detailIcons = {
 /* ===============================
    INIT ON LOAD
 ================================= */
-window.addEventListener("load", () => {
-    initCanvases();
-
+function requestLocation() {
     if (!navigator.geolocation) {
         locationLabel.textContent = "Location unavailable";
         getWeatherByCity("New York");
         return;
     }
 
+    locationLabel.textContent = "Detecting location...";
+
     navigator.geolocation.getCurrentPosition(
         position => {
             getWeatherByCoords(position.coords.latitude, position.coords.longitude);
         },
         error => {
+            console.warn("Geolocation error:", error.code, error.message);
             locationLabel.textContent = "Location denied";
             getWeatherByCity("New York");
         },
-        { timeout: 8000, enableHighAccuracy: false }
+        {
+            timeout: 15000,
+            maximumAge: 60000,
+            enableHighAccuracy: true
+        }
     );
+}
+
+window.addEventListener("load", () => {
+    initCanvases();
+    requestLocation();
 });
+
+// "Use My Location" button click
+const locBtn = document.getElementById("locBtn");
+if (locBtn) {
+    locBtn.addEventListener("click", () => {
+        requestLocation();
+    });
+}
 
 /* ===============================
    SEARCH EVENTS
